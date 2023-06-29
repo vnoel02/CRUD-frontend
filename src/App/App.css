@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* .campus-image {
+  max-width: 10px;
+  max-height: 10px;
+} */
+img {
+ max-width: 25%;
+  
+}
