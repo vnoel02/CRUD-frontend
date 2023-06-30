@@ -43,6 +43,7 @@ export const createNewCampusThunk = (campusInfo) => {
       const response = await axios.post("http://localhost:4000/api/campuses", {
         name: campusInfo.name,
         address: campusInfo.address,
+        // imageUrl: "hello",
         description: campusInfo.description
       });
       console.log("CREATENEWCAMPUS THUNK COMPLETED");
