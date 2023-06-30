@@ -21,6 +21,15 @@ export const createNewCampus = (payload) => {
   };
 };
 
+export const deleteCampus = (payload) => {
+    console.log("CREATING NEW DELETE CAMPUS ACTION");
+    return {
+        type: CampusActionType.DELETE_CAMPUS,
+        payload: payload,
+
+    };
+};
+
 //thunk for api call
 
 export const fetchAllCampusesThunk = () => {
@@ -35,6 +44,8 @@ export const fetchAllCampusesThunk = () => {
     }
   };
 };
+
+// Post - create a new campus in all campus view
 
 export const createNewCampusThunk = (campusInfo) => {
   return async (dispatch) => {
@@ -54,3 +65,21 @@ export const createNewCampusThunk = (campusInfo) => {
     }
   };
 };
+
+
+// Delete - delete a campus in all campus view
+
+export const deleteCampusThunk = (id) => {
+    return async (dispatch) => {
+        try {
+            console.log("DELETE CAMPUS THUNK IS FIRING");
+            const response = await axios.delete(`http://localhost:4000/api/campuses/delete/${id}`);
+            console.log("DELETE CAMPUS THUNK COMPLETED");
+            dispatch(deleteCampus(response.data))
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+    
+}

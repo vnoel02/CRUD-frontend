@@ -3,6 +3,7 @@ import CampusActionType from "./campus.types";
 export const INITIAL_STATE = {
     allCampuses: [],
     newCampus: [],
+    deleteCampus: [],
 };
 
 // action => {type, payload}, remember fetchAllCampuses function/action creator
@@ -16,6 +17,10 @@ const campusReducer = (state = INITIAL_STATE, action) => {
         case CampusActionType.CREATE_NEW_CAMPUS:
             return{
                 ...state, newCampus: action.payload
+            };
+        case CampusActionType.DELETE_CAMPUS:
+            return{
+                ...state, deleteCampus: action.payload
             };
         default:
             return state;
