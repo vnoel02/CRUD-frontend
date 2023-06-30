@@ -1,6 +1,6 @@
 // create new campus page
 import React from "react";
-import { createNewCampusThunk } from "../../redux/campuses/campus.actions";
+import { createNewCampusThunk, fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -19,6 +19,7 @@ export const CreateNewCampus = () => {
     description: "",
   });
 
+  const [isClicked, setIsClicked] = useState(false)
 
 
   const onChange = (e) => {
@@ -29,16 +30,24 @@ export const CreateNewCampus = () => {
     console.log(campusInfo);
   }, [campusInfo]);
 
+  useEffect(() => {
+    if (isClicked) {
+        dispatch(createNewCampusThunk());
+        navigate("/campuses");
+    }
+  }, [])
+
   const handleClick = (e) => {
     e.preventDefault();
     createNewCampus();
-    navigate("/campuses");
+    setIsClicked(true)
+    navigate("/campuses")
   };
 
   const createNewCampus = () => {
     console.log("RUNNING DISPATCH FOR NEW CAMPUS");
     console.log(campusInfo);
-    return dispatch(createNewCampusThunk(campusInfo));
+    dispatch(createNewCampusThunk(campusInfo)).then(() => dispatch(fetchAllCampusesThunk()));
   };
 
   return (
@@ -58,11 +67,11 @@ export const CreateNewCampus = () => {
             <input name="address" type="text" onChange={onChange}></input>
           </label>
 
-          <label>
+          {/* <label>
             {" "}
             Campus - Image Url
             <input type="text" onChange={onChange}></input>
-          </label>
+          </label> */}
 
           <label>
             {" "}
