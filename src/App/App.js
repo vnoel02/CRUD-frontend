@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import  AllCampuses from '../pages/Campus/AllCampuses';
 import { CreateNewCampus } from '../pages/Campus/CreateNewCampus';
 import SingleCampus from '../pages/Campus/SingleCampus';
+import EditCampus from '../pages/Campus/EditCampus';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/campuses/*" element={<AllCampuses />} />
         <Route path="/newcampus" element={<CreateNewCampus />} />
-        <Route path="/campuses/:id" element={<SingleCampus />} />
+        <Route path="/campuses/:id/" element={<SingleCampus />} />
+        <Route path="/campuses/:id/edit" element={<EditCampus/>} />
         {/* <Route path="" /> */}
       </Routes>
     </Router>

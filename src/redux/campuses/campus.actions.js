@@ -20,6 +20,7 @@ export const createNewCampus = (payload) => {
   };
 };
 
+// Delete - delete a campus action creator
 export const deleteCampus = (payload) => {
   console.log("CREATING NEW DELETE CAMPUS ACTION");
   return {
@@ -28,7 +29,29 @@ export const deleteCampus = (payload) => {
   };
 };
 
-//thunk for api call
+
+// Get - single campus
+
+export const fetchSingleCampus = (payload) => {
+    console.log("FETCH SINGLE CAMPUSES ACTION");
+    return {
+      type: CampusActionType.FETCH_SINGLE_CAMPUS,
+      payload: payload,
+    };
+  };
+  
+  // Update - update campus action creator
+
+export const updateCampus = (payload) => {
+    console.log("Creating new update campus action")
+    return {
+        type: CampusActionType.UPDATE_CAMPUS,
+        payload: payload,
+    }
+}
+
+
+//thunks for api calls
 
 export const fetchAllCampusesThunk = () => {
   return async (dispatch) => {
@@ -66,7 +89,7 @@ export const createNewCampusThunk = (campusInfo) => {
 
 // Delete - delete a campus in all campus view
 
-export const deleteCampusThunk = (id, payload) => {
+export const deleteCampusThunk = (id, campusInfo) => {
   return async (dispatch) => {
     try {
       console.log("DELETE CAMPUS THUNK IS FIRING");
@@ -81,15 +104,7 @@ export const deleteCampusThunk = (id, payload) => {
   };
 };
 
-// Get - single campus
-
-export const fetchSingleCampus = (payload) => {
-  console.log("FETCH SINGLE CAMPUSES ACTION");
-  return {
-    type: CampusActionType.FETCH_SINGLE_CAMPUS,
-    payload: payload,
-  };
-};
+// Get - get a single campus
 
 export const fetchSingleCampusThunk = (id) => {
   return async (dispatch) => {
@@ -103,3 +118,23 @@ export const fetchSingleCampusThunk = (id) => {
     }
   };
 };
+
+// Update - update a campus thunk
+
+export const updateCampusThunk = (campusID, campusInfo) => {
+    return async (dispatch) => {
+        try {
+            console.log("UPDATE CAMPUS THUNK IS FIRING");
+            const response = await axios.put(`http://localhost:4000/api/campuses/edit/${campusID}`, {
+                name: campusInfo.name,
+                address: campusInfo.address,
+                imageUrl: campusInfo.imageUrl,
+                description: campusInfo.description
+            });
+            console.log("UPDATE CAMPUS THUNK COMPLETED");
+            dispatch(updateCampus(response.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

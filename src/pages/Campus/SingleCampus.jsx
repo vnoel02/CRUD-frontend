@@ -5,7 +5,7 @@ import { fetchSingleCampusThunk } from "../../redux/campuses/campus.actions";
 import SingleCampusContainer from "../../components/SingleCampusContainer";
 
 function SingleCampus() {
-    // Using useLocation hook to pass prop through link
+    // Using useLocation hook to pass prop through link from ListCampuses containter
     const location = useLocation();
     const propsData = location.state;
     console.log(propsData)
@@ -30,6 +30,7 @@ function SingleCampus() {
 
     <div>
       <SingleCampusContainer list={singleCampus} />
+    
     </div>
   );
 }

@@ -4,7 +4,8 @@ export const INITIAL_STATE = {
     allCampuses: [],
     newCampus: [],
     deleteCampus: [],
-    singleCampus: []
+    singleCampus: [],
+    updateCampus: []
 };
 
 // action => {type, payload}, remember fetchAllCampuses function/action creator
@@ -27,6 +28,10 @@ const campusReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state, singleCampus: action.payload
             };
+        case CampusActionType.UPDATE_CAMPUS:
+            return {
+                ...state, updateCampus: action.payload
+            }
         default:
             return state;
     }
