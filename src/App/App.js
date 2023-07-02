@@ -15,6 +15,8 @@ function App() {
         <Route path="/newcampus" element={<CreateNewCampus />} />
         <Route path="/campuses/:id/" element={<SingleCampus />} />
         <Route path="/campuses/:id/edit" element={<EditCampus/>} />
+
+        {/* <Route path="/students/*" element={<AllStude} */}
         {/* <Route path="" /> */}
       </Routes>
     </Router>
