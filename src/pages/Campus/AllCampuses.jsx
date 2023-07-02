@@ -33,7 +33,7 @@ const AllCampuses = () => {
 
   return (
     <div>
-      <Link to="/newcampus">
+      <Link to="/newcampus/">
         <button>Add New Campus</button>
       </Link>
 

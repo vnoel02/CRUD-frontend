@@ -1,59 +1,58 @@
-// create new campus page
-import React from "react";
-import { createNewCampusThunk, fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import {
+  fetchSingleCampus,
+  fetchSingleCampusThunk,
+  updateCampusThunk,
+} from "../../redux/campuses/campus.actions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
 
-// For tommorrow just handle axios call within local component
+// data is coming from SingleCampusContainer
+const EditCampus = () => {
+  const location = useLocation();
+  const campusID = location.state.id;
+  console.log(campusID);
 
-export const CreateNewCampus = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [campusInfo, setCampusInfo] = useState({
     name: "",
     address: "",
-    // imageUrl: "",
+    imageUrl: "",
     description: "",
   });
 
-//   const [isClicked, setIsClicked] = useState(false)
-
+  useEffect(() => {
+    console.log(campusInfo);
+  }, [campusInfo]);
 
   const onChange = (e) => {
     setCampusInfo({ ...campusInfo, [e.target.name]: e.target.value });
   };
 
-  // just used to log text onchange
-  useEffect(() => {
-    console.log(campusInfo);
-  }, [campusInfo]);
-
-//   useEffect(() => {
-//     if (isClicked) {
-//         dispatch(createNewCampusThunk());
-//         navigate("/campuses");
-//     }
-//   }, [])
-
   const handleClick = (e) => {
     e.preventDefault();
-    createNewCampus();
+    updateCampus();
     // setIsClicked(true)
-    navigate("/campuses")
+    // dispatch(fetchSingleCampusThunk(campusID));
+    setTimeout(()=> {
+        alert("Confirm Edit")
+        navigate(-1); 
+    }, 500)
+      
   };
 
-  const createNewCampus = () => {
-    console.log("RUNNING DISPATCH FOR NEW CAMPUS");
-    console.log(campusInfo);
-    dispatch(createNewCampusThunk(campusInfo)).then(() => dispatch(fetchAllCampusesThunk()));
+  const updateCampus = () => {
+    console.log(campusID);
+    dispatch(updateCampusThunk(campusID, campusInfo))
   };
 
   return (
     <div>
-      <h1>Create New Campus</h1>
+      <h1> Edit Campus</h1>
       <div className="form-container">
         <form id="addcampus">
           <label>
@@ -70,6 +69,12 @@ export const CreateNewCampus = () => {
 
           <label>
             {" "}
+            Campus - Image Url
+            <input name="imageUrl" onChange={onChange}></input>
+          </label>
+
+          <label>
+            {" "}
             Campus - Description
             <textarea
               name="description"
@@ -82,9 +87,11 @@ export const CreateNewCampus = () => {
 
         <button id="addcampusbtn" onClick={handleClick}>
           {" "}
-          Add Campus
+          Edit Campus
         </button>
       </div>
     </div>
   );
 };
+
+export default EditCampus;
