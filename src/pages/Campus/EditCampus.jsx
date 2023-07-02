@@ -37,15 +37,17 @@ const EditCampus = () => {
     e.preventDefault();
     updateCampus();
     // setIsClicked(true)
-
-    navigate(-1);
+    // dispatch(fetchSingleCampusThunk(campusID));
+    setTimeout(()=> {
+        alert("Confirm Edit")
+        navigate(-1); 
+    }, 500)
+      
   };
 
   const updateCampus = () => {
     console.log(campusID);
-    dispatch(updateCampusThunk(campusID, campusInfo)).then(() =>
-      dispatch(fetchSingleCampusThunk(campusID))
-    );
+    dispatch(updateCampusThunk(campusID, campusInfo))
   };
 
   return (

@@ -131,6 +131,7 @@ export const updateCampusThunk = (campusID, campusInfo) => {
                 imageUrl: campusInfo.imageUrl,
                 description: campusInfo.description
             });
+            console.log(campusInfo);
             console.log("UPDATE CAMPUS THUNK COMPLETED");
             dispatch(updateCampus(response.data))
         } catch (error) {
