@@ -17,6 +17,12 @@ export const createNewStudent = (payload) => {
   };
 };
 
+export const deleteStudent = (payload) => {
+  return {
+    type: StudentActionTypes.DELETE_STUDENT,
+    payload: payload,
+  };
+};
 /*thunks for api calls------------------------------------------------------------------------------------------------
 *
 *
@@ -40,15 +46,32 @@ export const createNewStudentThunk = (studentInfo) => {
   return async (dispatch) => {
     try {
       console.log("Create new student thunk is firing");
-      const response = await axios.post("http://localhost:4000/api/students/newstudent", {
-        firstName: studentInfo.firstName,
-        lastName: studentInfo.lastName,
-        email: studentInfo.email,
-        GPA: studentInfo.gpa
-      }
+      const response = await axios.post(
+        "http://localhost:4000/api/students/newstudent",
+        {
+          firstName: studentInfo.firstName,
+          lastName: studentInfo.lastName,
+          email: studentInfo.email,
+          GPA: studentInfo.gpa,
+        }
       );
       console.log("Create new student thunk completed");
       dispatch(createNewStudent(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteStudentThunk = (id, studentInfo) => {
+  return async (dispatch) => {
+    try {
+      console.log("Delete student thunk is firing");
+      const response = await axios.delete(
+        `http://localhost:4000/api/students/delete/${id}`
+      );
+      console.log("Delete student thunk completed");
+      dispatch(deleteStudent(response.data));
     } catch (error) {
       console.log(error);
     }

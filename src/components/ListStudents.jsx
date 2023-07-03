@@ -1,20 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteCampusThunk } from "../redux/campuses/campus.actions";
-import { fetchAllCampusesThunk } from "../redux/campuses/campus.actions";
-
 import { Routes, Route, Link } from "react-router-dom";
+
 import SingleCampus from "../pages/Campus/SingleCampus";
+import { deleteStudentThunk, fetchAllStudentsThunk } from "../redux/students/students.actions";
 
 export const ListStudents = (props) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-//   const onClick = (id, e) => {
-//     e.preventDefault();
-//     dispatch(deleteCampusThunk(id)).then(() => {
-//       dispatch(fetchAllCampusesThunk());
-//     });
-//   };
+  const onClick = (id, e) => {
+    e.preventDefault();
+    dispatch(deleteStudentThunk(id)).then(() => {
+      dispatch(fetchAllStudentsThunk());
+    });
+  };
 
   console.log("List students component");
   console.log(props.list);
@@ -29,7 +28,7 @@ export const ListStudents = (props) => {
             alt="student img"
           ></img>
           <h2>{student.firstName} {student.lastName}</h2>
-          {/* <button onClick={(e) => onClick(student.id, e)}>X</button> */}
+          <button onClick={(e) => onClick(student.id, e)}>X</button>
 
         </div>
       );
