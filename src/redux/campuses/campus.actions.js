@@ -29,29 +29,31 @@ export const deleteCampus = (payload) => {
   };
 };
 
-
 // Get - single campus
 
 export const fetchSingleCampus = (payload) => {
-    console.log("FETCH SINGLE CAMPUSES ACTION");
-    return {
-      type: CampusActionType.FETCH_SINGLE_CAMPUS,
-      payload: payload,
-    };
+  console.log("FETCH SINGLE CAMPUSES ACTION");
+  return {
+    type: CampusActionType.FETCH_SINGLE_CAMPUS,
+    payload: payload,
   };
-  
-  // Update - update campus action creator
+};
+
+// Update - update campus action creator
 
 export const updateCampus = (payload) => {
-    console.log("Creating new update campus action")
-    return {
-        type: CampusActionType.UPDATE_CAMPUS,
-        payload: payload,
-    }
-}
+  console.log("Creating new update campus action");
+  return {
+    type: CampusActionType.UPDATE_CAMPUS,
+    payload: payload,
+  };
+};
 
-
-//thunks for api calls
+/*thunks for api calls------------------------------------------------------------------------------------------------
+*
+*
+*
+----------------------------------------------------------------------------------------------------------------------*/
 
 export const fetchAllCampusesThunk = () => {
   return async (dispatch) => {
@@ -109,10 +111,12 @@ export const deleteCampusThunk = (id, campusInfo) => {
 export const fetchSingleCampusThunk = (id) => {
   return async (dispatch) => {
     try {
-        console.log("FETCH SINGLE CAMPUS THUNK IS FIRING");
-        const response  = await axios.get(`http://localhost:4000/api/campuses/get/${id}`)
-        console.log("FETCH SINGLE CAMPUS THUNK COMPLETED");
-        dispatch(fetchSingleCampus(response.data));
+      console.log("FETCH SINGLE CAMPUS THUNK IS FIRING");
+      const response = await axios.get(
+        `http://localhost:4000/api/campuses/get/${id}`
+      );
+      console.log("FETCH SINGLE CAMPUS THUNK COMPLETED");
+      dispatch(fetchSingleCampus(response.data));
     } catch (error) {
       console.error(error);
     }
@@ -122,20 +126,23 @@ export const fetchSingleCampusThunk = (id) => {
 // Update - update a campus thunk
 
 export const updateCampusThunk = (campusID, campusInfo) => {
-    return async (dispatch) => {
-        try {
-            console.log("UPDATE CAMPUS THUNK IS FIRING");
-            const response = await axios.put(`http://localhost:4000/api/campuses/edit/${campusID}`, {
-                name: campusInfo.name,
-                address: campusInfo.address,
-                imageUrl: campusInfo.imageUrl,
-                description: campusInfo.description
-            });
-            console.log(campusInfo);
-            console.log("UPDATE CAMPUS THUNK COMPLETED");
-            dispatch(updateCampus(response.data))
-        } catch (error) {
-            console.log(error)
+  return async (dispatch) => {
+    try {
+      console.log("UPDATE CAMPUS THUNK IS FIRING");
+      const response = await axios.put(
+        `http://localhost:4000/api/campuses/edit/${campusID}`,
+        {
+          name: campusInfo.name,
+          address: campusInfo.address,
+          imageUrl: campusInfo.imageUrl,
+          description: campusInfo.description,
         }
+      );
+      console.log(campusInfo);
+      console.log("UPDATE CAMPUS THUNK COMPLETED");
+      dispatch(updateCampus(response.data));
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
+};
