@@ -23,22 +23,12 @@ export const ListStudents = (props) => {
       console.log(`Hello ${student.campus}`)
       return (
         <div className="campus-container" key={student.id}>
-          {/* <Link to={`/campuses/${student.id}`} state={student.id}> */}
-            <h2>{student.firstName} {student.lastName}</h2>
-             {/* {student.campus? 
-             (student.campus.map((campus)=> {
-                return <h1>{campus.name}</h1>
-             }
-             )) : (<h1> Nothing</h1>)
-            } */}
-            
-             {/* <h2>{student.campus}</h2> */}
-          {/* </Link> */}
           <img
             className="student-img"
             src={student.imageUrl}
             alt="student img"
           ></img>
+          <h2>{student.firstName} {student.lastName}</h2>
           {/* <button onClick={(e) => onClick(student.id, e)}>X</button> */}
 
         </div>
@@ -48,9 +38,4 @@ export const ListStudents = (props) => {
     <h1>...Loading</h1>
   );
 };
-// return (
-// student.campus.map((campus) => {
-//   return <h1>{campus.name}</h1>
-// })
-// )
 export default ListStudents;
