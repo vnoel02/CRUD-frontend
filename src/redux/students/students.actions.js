@@ -30,6 +30,13 @@ export const fetchSingleStudent = (payload) => {
         payload: payload,
     }
 }
+
+export const updateStudent = (payload) => {
+    return {
+        type: StudentActionTypes.UPDATE_STUDENT,
+        payload: payload
+    }
+} 
 /*thunks for api calls------------------------------------------------------------------------------------------------
 *
 *
@@ -92,6 +99,26 @@ export const fetchSingleStudentThunk = (id) => {
             const response = await axios.get(`http://localhost:4000/api/students/get/${id}`)
             console.log("fetch single student thunk is firing");
             dispatch(fetchSingleStudent(response.data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+export const updateStudentThunk = (studentId, studentInfo) => {
+    return async (dispatch) => {
+        try {
+            console.log("Update student thunk firing");
+            const response = await axios.put(`http://localhost:4000/api/students/edit/${studentId}`, {
+                firstName: studentInfo.firstName,
+                lastName: studentInfo.lastName,
+                email: studentInfo.email,
+                GPA: studentInfo.GPA,
+                imageUrl: studentInfo.imageUrl,
+                campusId: studentInfo.campusId
+            });
+            console.log("Update student thunk completed")
+            dispatch(updateStudent(response.data));
         } catch (error) {
             console.error(error);
         }

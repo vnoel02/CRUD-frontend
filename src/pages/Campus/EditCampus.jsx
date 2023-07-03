@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
-  fetchSingleCampus,
-  fetchSingleCampusThunk,
   updateCampusThunk,
 } from "../../redux/campuses/campus.actions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
+
 
 // data is coming from SingleCampusContainer
 const EditCampus = () => {

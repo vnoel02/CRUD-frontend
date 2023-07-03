@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// From SingleCampus.jsx
 const SingleStudentContainer = (props) => {
   return props.list ? (
     props.list.map((student) => {
@@ -16,9 +17,9 @@ const SingleStudentContainer = (props) => {
               alt="campus img"
             ></img>
           </div>
-            {/* <Link to={`/campuses/${campus.id}/edit`} state={campus} > */}
-                {/* <button>Edit Campus</button> */}
-            {/* </Link> */}
+            <Link to={`/students/edit/${student.id}`} state={student} >
+                <button>Edit Student</button>
+            </Link>
           
         </div>
       );
