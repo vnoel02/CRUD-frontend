@@ -23,6 +23,9 @@ const AllStudents = () => {
   return (
     <div>
       <h1>AllStudents</h1>
+      <Link to="/newstudent">
+        <button>Add New Student</button>
+      </Link>
       <ListStudents list={allStudents} />
     </div>
     
