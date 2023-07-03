@@ -5,6 +5,7 @@ export const INITIAL_STATE = {
     createNewStudent: [],
     deleteStudent: [],
     singleStudent: [],
+    updateStudent: [],
 }
 
 // action => {type, payload}
@@ -30,6 +31,11 @@ const studentReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 singleStudent: action.payload
+            }
+        case StudentActionTypes.UPDATE_STUDENT:
+            return {
+                ...state,
+                updateStudent: action.payload
             }
         default: 
             return state;

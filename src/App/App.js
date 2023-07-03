@@ -8,6 +8,7 @@ import EditCampus from "../pages/Campus/EditCampus";
 import AllStudents from "../pages/Students/AllStudents";
 import CreateNewStudent from "../pages/Students/CreateNewStudent";
 import SingleStudent from "../pages/Students/SingleStudent";
+import EditStudent from "../pages/Students/EditStudent";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/students/*" element={<AllStudents />} />
         <Route path="/newstudent" element={<CreateNewStudent />} />
         <Route path="/students/:id/" element={<SingleStudent/>} />
+        <Route path="/students/edit/:id" element={<EditStudent />} />
         {/* <Route path="" /> */}
       </Routes>
     </Router>
