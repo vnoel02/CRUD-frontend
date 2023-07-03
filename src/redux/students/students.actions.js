@@ -23,6 +23,13 @@ export const deleteStudent = (payload) => {
     payload: payload,
   };
 };
+
+export const fetchSingleStudent = (payload) => {
+    return {
+        type: StudentActionTypes.FETCH_SINGLE_STUDENT,
+        payload: payload,
+    }
+}
 /*thunks for api calls------------------------------------------------------------------------------------------------
 *
 *
@@ -77,3 +84,16 @@ export const deleteStudentThunk = (id, studentInfo) => {
     }
   };
 };
+
+export const fetchSingleStudentThunk = (id) => {
+    return async (dispatch) => {
+        try {
+            console.log("Fetch single student thunk is firing");
+            const response = await axios.get(`http://localhost:4000/api/students/get/${id}`)
+            console.log("fetch single student thunk is firing");
+            dispatch(fetchSingleStudent(response.data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}

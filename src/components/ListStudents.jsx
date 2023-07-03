@@ -27,7 +27,11 @@ export const ListStudents = (props) => {
             src={student.imageUrl}
             alt="student img"
           ></img>
-          <h2>{student.firstName} {student.lastName}</h2>
+          {/* Uses name to go to single campus page */}
+          <Link to={`/students/${student.id}`} state={student.id}>
+            <h2>{student.firstName} {student.lastName}</h2>
+          </Link>
+          
           <button onClick={(e) => onClick(student.id, e)}>X</button>
 
         </div>

@@ -4,6 +4,7 @@ export const INITIAL_STATE = {
     allStudents: [],
     createNewStudent: [],
     deleteStudent: [],
+    singleStudent: [],
 }
 
 // action => {type, payload}
@@ -24,6 +25,11 @@ const studentReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 deleteStudent: action.payload
+            }
+        case StudentActionTypes.FETCH_SINGLE_STUDENT:
+            return {
+                ...state,
+                singleStudent: action.payload
             }
         default: 
             return state;

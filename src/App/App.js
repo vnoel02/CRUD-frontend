@@ -7,6 +7,7 @@ import SingleCampus from "../pages/Campus/SingleCampus";
 import EditCampus from "../pages/Campus/EditCampus";
 import AllStudents from "../pages/Students/AllStudents";
 import CreateNewStudent from "../pages/Students/CreateNewStudent";
+import SingleStudent from "../pages/Students/SingleStudent";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         {/* Student routes */}
         <Route path="/students/*" element={<AllStudents />} />
         <Route path="/newstudent" element={<CreateNewStudent />} />
+        <Route path="/students/:id/" element={<SingleStudent/>} />
         {/* <Route path="" /> */}
       </Routes>
     </Router>
