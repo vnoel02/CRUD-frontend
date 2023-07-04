@@ -24,7 +24,7 @@ const SingleStudent = () => {
     }, [])
   return (
     <div>
-        <SingleStudentContainer list={singleStudent}/>
+        <SingleStudentContainer student={singleStudent}/>
     </div>
   )
 }

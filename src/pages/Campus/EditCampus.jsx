@@ -10,17 +10,22 @@ import { useNavigate } from "react-router-dom";
 
 // data is coming from SingleCampusContainer
 const EditCampus = () => {
+  
   const location = useLocation();
   const campusID = location.state.id;
+  const campusName = location.state.name;
+  const campusAddress = location.state.address;
+  const campusImageUrl = location.state.imageUrl;
+  const campusDesc = location.state.description;
   console.log(campusID);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [campusInfo, setCampusInfo] = useState({
-    name: "",
-    address: "",
-    imageUrl: "",
-    description: "",
+    name: campusName,
+    address: campusAddress,
+    imageUrl: campusImageUrl,
+    description: campusDesc,
   });
 
   useEffect(() => {
@@ -56,19 +61,28 @@ const EditCampus = () => {
           <label>
             {" "}
             Campus - Name
-            <input name="name" type="text" onChange={onChange}></input>
+            <input name="name" 
+            type="text" 
+            defaultValue={campusName} 
+            onChange={onChange}></input>
           </label>
 
           <label>
             {" "}
             Campus - Address
-            <input name="address" type="text" onChange={onChange}></input>
+            <input name="address" 
+            type="text" 
+            defaultValue={campusAddress} 
+            onChange={onChange}></input>
           </label>
 
           <label>
             {" "}
             Campus - Image Url
-            <input name="imageUrl" onChange={onChange}></input>
+            <input name="imageUrl" 
+            onChange={onChange} 
+            defaultValue= {campusImageUrl}
+            ></input>
           </label>
 
           <label>
@@ -79,6 +93,7 @@ const EditCampus = () => {
               id="textbox"
               type="text"
               onChange={onChange}
+              defaultValue = {campusDesc}
             ></textarea>
           </label>
         </form>

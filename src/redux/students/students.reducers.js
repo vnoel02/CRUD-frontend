@@ -2,10 +2,10 @@ import StudentActionTypes from "./students.types";
 
 export const INITIAL_STATE = {
     allStudents: [],
-    createNewStudent: [],
-    deleteStudent: [],
-    singleStudent: [],
-    updateStudent: [],
+    createNewStudent: {},
+    deleteStudent: {},
+    singleStudent: {},
+    updateStudent: {},
 }
 
 // action => {type, payload}

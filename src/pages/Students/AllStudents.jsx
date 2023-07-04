@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchAllStudentsThunk } from "../../redux/students/students.actions";
 import ListStudents from "../../components/ListStudents";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
 const AllStudents = () => {
   const allStudents = useSelector((state) => state.students.allStudents);
@@ -22,11 +23,15 @@ const AllStudents = () => {
 
   return (
     <div>
+      <div>
       <h1>AllStudents</h1>
       <Link to="/newstudent">
         <button>Add New Student</button>
       </Link>
       <ListStudents list={allStudents} />
+        
+      </div>
+      
     </div>
     
   )

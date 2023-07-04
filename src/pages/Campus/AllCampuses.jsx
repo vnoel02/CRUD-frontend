@@ -7,39 +7,36 @@ import { useEffect } from "react";
 import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
 import ListCampuses from "../../components/ListCampuses";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
 const AllCampuses = () => {
+  // Contains state of all campuses
   const allCampuses = useSelector((state) => state.campuses.allCampuses);
-  // const [allCampusesState, setAllCamusesState] = useState([])
   const dispatch = useDispatch();
+
+
   const fetchAllCampuses = () => {
     console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
     dispatch(fetchAllCampusesThunk());
   };
 
-  // const [rerender, setRerender] = useState(false);
-
-  // useEffect(() => {
-  //   dispatch(fetchAllCampusesThunk());
-  //   setRerender(!rerender);
-  // }, []);
-
+  // Fetches all the campuses
   useEffect(() => {
     console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
-    console.log(allCampuses)
-    // dispatch(fetchAllCampusesThunk());
+    console.log(allCampuses);
     fetchAllCampuses();
-  }, []); // insert allCampuses
+  }, []); 
 
   return (
     <div>
-      <Link to="/newcampus/">
-        <button>Add New Campus</button>
-      </Link>
+      <div>
+        <Link to="/newcampus/">
+          <button>Add New Campus</button>
+        </Link>
 
-      <h1>All Campuses</h1>
-
-      <ListCampuses list={allCampuses} />
+        <h1>All Campuses</h1>
+        <ListCampuses list={allCampuses} />
+      </div>
     </div>
   );
 };

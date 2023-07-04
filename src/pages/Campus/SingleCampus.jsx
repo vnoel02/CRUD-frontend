@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchSingleCampusThunk } from "../../redux/campuses/campus.actions";
 import SingleCampusContainer from "../../components/SingleCampusContainer";
+import Navbar from "../../components/Navbar";
 
 function SingleCampus() {
     // Using useLocation hook to pass prop through link from ListCampuses containter
@@ -20,7 +21,7 @@ function SingleCampus() {
 
     useEffect(() => {
         console.log("USEEFFECT FIRING FETCHSINGLECAMPUS")
-        console.log(singleCampus)
+        console.log("This is the data", singleCampus)
         fetchSingleCampus();
     }, [])
     
@@ -29,7 +30,10 @@ function SingleCampus() {
   return (
 
     <div>
-      <SingleCampusContainer list={singleCampus} />
+      <div>
+      <SingleCampusContainer campus={singleCampus} />
+      </div>
+      
     
     </div>
   );

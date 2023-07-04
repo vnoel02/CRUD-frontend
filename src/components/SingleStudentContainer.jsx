@@ -1,32 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ListCampuses from "./ListCampuses";
 
 // From SingleCampus.jsx
 const SingleStudentContainer = (props) => {
-  return props.list ? (
-    props.list.map((student) => {
-      return (
-        <div key={student.id}>
-          <div id="singlecampus" key={student.id}>
-            <h2>{student.firstName} {student.lastName}</h2>
-            <h2> {student.email}</h2>
-            <p> GPA: {student.GPA}</p>
-            <img
-              className="campus-img"
-              src={student.imageUrl}
-              alt="campus img"
-            ></img>
-          </div>
-            <Link to={`/students/edit/${student.id}`} state={student} >
-                <button>Edit Student</button>
-            </Link>
-          
-        </div>
-      );
-    })
-  ) : (
-    <h1>...Loading</h1>
+  //   return props.list ? (
+  // props.list.map((student) => {
+    props.student.campus ? 
+    console.log(props.student.campus.id) :
+    console.log("Loading...");
+  return (
+    <div>
+      <div id="singlecampus">
+        <h2>
+          {props.student.firstName} {props.student.lastName}
+        </h2>
+        <h2> {props.student.email}</h2>
+        <p> GPA: {props.student.GPA}</p>
+        <img
+          className="campus-img"
+          src={props.student.imageUrl}
+          alt="campus img"
+        ></img>
+      </div>
+      <Link to={`/students/edit/${props.student.id}`} state={props.student}>
+        <button>Edit Student</button>
+      </Link>
+
+    <h2> This student is registered to this campus</h2>
+      {props.student.campus? (
+        <Link to={`/campuses/${props.student.campus.id}`} state={props.student.campus.id}>
+        <h3> {props.student.campus.name}</h3>
+        </Link>
+        
+      ) : (
+        <h4> No campuses registered</h4>
+      )}
+    </div>
   );
-};
+}; //)
+//   ) : (
+//     <h1>...Loading</h1>
+//   );
 
 export default SingleStudentContainer;

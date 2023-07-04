@@ -2,10 +2,10 @@ import CampusActionType from "./campus.types";
 
 export const INITIAL_STATE = {
   allCampuses: [],
-  newCampus: [],
-  deleteCampus: [],
-  singleCampus: [],
-  updateCampus: [],
+  newCampus: {},
+  deleteCampus: {},
+  singleCampus: {},
+  updateCampus: {},
 };
 
 // action => {type, payload}, remember fetchAllCampuses function/action creator
