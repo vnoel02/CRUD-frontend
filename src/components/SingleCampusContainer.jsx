@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ListStudents from "./ListStudents";
+import CampusStudents from "./CampusStudents";
+import { useReducer } from "react";
 
 const SingleCampusContainer = (props) => {
+  // const [render, setRerender] = useState(false);
+  // const rerender = () => {
+  //   setRerender(!rerender);
+  // }
+  
+
+
   // return props.list ? (
   // campus.campus.map((campus) => {
   // console.log("Hello", props.campus);
+ 
   console.log(props.campus.students)
   return (
     <div>
@@ -40,8 +50,7 @@ const SingleCampusContainer = (props) => {
       )} */}
       {
       props.campus.students && props.campus.students.length > 0 ? (
-        
-       <ListStudents list={props.campus.students} />
+        <CampusStudents list={props.campus.students} rerender={props.rerender} />
       ) : (
         <h4> No students</h4>
       )}

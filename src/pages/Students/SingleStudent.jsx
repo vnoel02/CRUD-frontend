@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchSingleStudentThunk } from "../../redux/students/students.actions";
 import SingleStudentContainer from "../../components/SingleStudentContainer";
+import { useState } from "react";
 
 const SingleStudent = () => {
+
+
+
+   
     const location = useLocation();
     const propsData = location.state;
 

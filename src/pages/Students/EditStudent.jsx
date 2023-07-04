@@ -10,18 +10,25 @@ import { useNavigate } from "react-router-dom";
 const EditStudent = () => {
   const location = useLocation();
   const studentId = location.state.id;
+  const studentFirstName = location.state.firstName;
+  const studentLastName = location.state.lastName;
+  const studentEmail = location.state.email;
+  const studentImageUrl = location.state.imageUrl;
+  const studentGPA = location.state.gpa;
+  const studentCampusID = location.state.campusId;
+
   console.log(studentId);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [studentInfo, setStudentInfo] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    imageUrl: "",
-    gpa: "",
-    campusId: "",
+    firstName: studentFirstName,
+    lastName: studentLastName,
+    email: studentEmail,
+    imageUrl: studentImageUrl,
+    gpa: studentGPA,
+    campusId: studentCampusID,
   });
 
   useEffect(() => {
@@ -56,43 +63,60 @@ const EditStudent = () => {
           <label>
             {" "}
             First Name
-            <input name="firstName" type="text" onChange={onChange}></input>
+            <input name="firstName" 
+            type="text" 
+            onChange={onChange}
+            defaultValue={studentFirstName}></input>
           </label>
 
           <label>
             {" "}
             Last Name
-            <input name="lastName" type="text" onChange={onChange}></input>
+            <input name="lastName" 
+            type="text" 
+            onChange={onChange}
+            defaultValue={studentLastName}></input>
           </label>
 
           <label>
             {" "}
             E-mail
-            <input name="email" type="text" onChange={onChange}></input>
+            <input name="email" 
+            type="text" 
+            onChange={onChange}
+            defaultValue={studentEmail}></input>
           </label>
 
           <label>
             {" "}
             Student - Image Url
-            <input name="imageUrl" onChange={onChange}></input>
+            <input name="imageUrl" 
+            onChange={onChange}
+            defaultValue={studentImageUrl}></input>
           </label>
 
           <label>
             {" "}
             GPA
-            <input name="gpa" type="number" onChange={onChange}></input>
+            <input name="gpa" 
+            type="number"
+             onChange={onChange}
+             defaultValue={studentGPA}></input>
           </label>
 
           <label>
             {" "}
             Campus - ID
-            <input name="campusId" type="number" onChange={onChange}></input>
+            <input name="campusId" 
+            type="number" 
+            onChange={onChange}
+            defaultValue={studentCampusID}></input>
           </label>
         </form>
 
         <button id="addcampusbtn" onClick={handleClick}>
           {" "}
-          Add Student
+          Edit Student
         </button>
       </div>
     </div>

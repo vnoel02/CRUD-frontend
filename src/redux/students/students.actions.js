@@ -37,6 +37,13 @@ export const updateStudent = (payload) => {
         payload: payload
     }
 } 
+
+export const removeStudent = (payload) => {
+    return {
+        type: StudentActionTypes.REMOVE_STUDENT_CAMPUS,
+        payload: payload
+    }
+}
 /*thunks for api calls------------------------------------------------------------------------------------------------
 *
 *
@@ -119,6 +126,21 @@ export const updateStudentThunk = (studentId, studentInfo) => {
             });
             console.log("Update student thunk completed")
             dispatch(updateStudent(response.data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+export const removeStudentThunk = (studentId) => {
+    return async (dispatch) => {
+        try {
+            console.log("Remove student thunk firing");
+            const response = await axios.put(`http://localhost:4000/api/students/edit/${studentId}`, {
+                campusId: null
+            })
+            console.log("Remove Student Thunk completed");
+            dispatch(removeStudent(response.data));
         } catch (error) {
             console.error(error);
         }

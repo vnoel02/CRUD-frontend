@@ -4,8 +4,14 @@ import { useLocation } from "react-router-dom";
 import { fetchSingleCampusThunk } from "../../redux/campuses/campus.actions";
 import SingleCampusContainer from "../../components/SingleCampusContainer";
 import Navbar from "../../components/Navbar";
+import { useState } from "react";
 
 function SingleCampus() {
+  const [render, setRerender] = useState(false);
+  const rerender = () => {
+    setRerender(!rerender);
+  }
+ 
     // Using useLocation hook to pass prop through link from ListCampuses containter
     const location = useLocation();
     const propsData = location.state;
@@ -31,7 +37,7 @@ function SingleCampus() {
 
     <div>
       <div>
-      <SingleCampusContainer campus={singleCampus} />
+      <SingleCampusContainer campus={singleCampus} rerender={rerender} />
       </div>
       
     
