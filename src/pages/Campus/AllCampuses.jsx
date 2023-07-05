@@ -1,7 +1,7 @@
 // Single campus data is handled by parameterized routes in express
 
 // Page that displays all campuses
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
@@ -9,37 +9,34 @@ import ListCampuses from "../../components/ListCampuses";
 import { Link } from "react-router-dom";
 
 const AllCampuses = () => {
+  // Contains state of all campuses
   const allCampuses = useSelector((state) => state.campuses.allCampuses);
-  // const [allCampusesState, setAllCamusesState] = useState([])
   const dispatch = useDispatch();
+
   const fetchAllCampuses = () => {
     console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
     dispatch(fetchAllCampusesThunk());
   };
 
-  // const [rerender, setRerender] = useState(false);
-
-  // useEffect(() => {
-  //   dispatch(fetchAllCampusesThunk());
-  //   setRerender(!rerender);
-  // }, []);
-
+  // Fetches all the campuses
   useEffect(() => {
     console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
-    console.log(allCampuses)
-    // dispatch(fetchAllCampusesThunk());
+    console.log(allCampuses);
     fetchAllCampuses();
-  }, []); // insert allCampuses
+  }, []);
 
   return (
     <div>
-      <Link to="/newcampus/">
-        <button>Add New Campus</button>
-      </Link>
+      <div>
+        {/* Redirects to create a campus page */}
+        <Link to="/newcampus/">
+          <button>Add New Campus</button>
+        </Link>
 
-      <h1>All Campuses</h1>
-
-      <ListCampuses list={allCampuses} />
+        {/* Child component that lists out all the campuses */}
+        <h1>All Campuses</h1>
+        <ListCampuses list={allCampuses} />
+      </div>
     </div>
   );
 };

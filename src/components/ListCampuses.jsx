@@ -4,13 +4,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteCampusThunk } from "../redux/campuses/campus.actions";
 import { fetchAllCampusesThunk } from "../redux/campuses/campus.actions";
-
-import { Routes, Route, Link } from "react-router-dom";
-import SingleCampus from "../pages/Campus/SingleCampus";
+import { Link } from "react-router-dom";
 
 export const ListCampuses = (props) => {
   const dispatch = useDispatch();
 
+  // A delete API call will be sent onClick. The the second dispatch is for rendering that change
   const onClick = (id, e) => {
     e.preventDefault();
     dispatch(deleteCampusThunk(id)).then(() => {
@@ -18,12 +17,11 @@ export const ListCampuses = (props) => {
     });
   };
 
-  console.log("List campuses component");
-  console.log(props.list);
-  return props.list ? (
+  return props.list && props.list.length > 0 ? (
     props.list.map((campus) => {
       return (
         <div className="campus-container" key={campus.id}>
+          {/* Each campus has a link to its single view */}
           <Link to={`/campuses/${campus.id}`} state={campus.id}>
             <h2>{campus.name}</h2>
           </Link>
@@ -32,14 +30,13 @@ export const ListCampuses = (props) => {
             src={campus.imageUrl}
             alt="campus img"
           ></img>
-          <button onClick={(e) => onClick(campus.id, e)}>X</button>
-
-          
+          {/* Delete button */}
+          <button onClick={(e) => onClick(campus.id, e)}> X </button>
         </div>
       );
     })
   ) : (
-    <h1>...Loading</h1>
+    <h2> No Campuses </h2>
   );
 };
 

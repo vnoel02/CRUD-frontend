@@ -37,10 +37,7 @@
   }
 }
 
-/* .campus-image {
-  max-width: 10px;
-  max-height: 10px;
-} */
+
 img {
  max-width: 25%;
   
@@ -77,3 +74,17 @@ input, label {
   margin-top: 20px;
   width: 200px;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  padding-right: 100px;
+  padding-bottom: 30px;
+  
+}
+

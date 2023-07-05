@@ -1,24 +1,27 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  deleteStudentThunk,
-  fetchAllStudentsThunk,
-} from "../redux/students/students.actions";
 
-export const ListStudents = (props) => {
+import { removeStudentThunk } from "../redux/students/students.actions";
+
+const CampusStudents = (props) => {
   const dispatch = useDispatch();
 
   const onClick = (id, e) => {
     e.preventDefault();
-    dispatch(deleteStudentThunk(id)).then(() => {
-      dispatch(fetchAllStudentsThunk());
-    });
+    dispatch(removeStudentThunk(id));
+    console.log("FORCING UPDATE");
+    setTimeout(() => {
+      alert("Deleting...");
+      props.forceUpdate();
+    }, 100);
+
+    props.forceUpdate();
   };
 
   console.log("List students component");
   console.log(props.list);
-  return props.list && props.list.length > 0 ? (
+  return props.list ? (
     props.list.map((student) => {
       console.log(`Hello ${student.campus}`);
       return (
@@ -34,13 +37,17 @@ export const ListStudents = (props) => {
               {student.firstName} {student.lastName}
             </h2>
           </Link>
-
-          <button onClick={(e) => onClick(student.id, e)}>X</button>
+          {/* For removing a student from campus. It simply changes the campus id to null for a student */}
+          <button onClick={(e) => onClick(student.id, e)}>
+            {" "}
+            Remove Student from Campus
+          </button>
         </div>
       );
     })
   ) : (
-    <h1> No students available</h1>
+    <h1>...Loading</h1>
   );
 };
-export default ListStudents;
+
+export default CampusStudents;

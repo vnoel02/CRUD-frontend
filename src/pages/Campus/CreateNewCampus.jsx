@@ -15,33 +15,23 @@ export const CreateNewCampus = () => {
   const [campusInfo, setCampusInfo] = useState({
     name: "",
     address: "",
-    // imageUrl: "",
     description: "",
   });
 
-//   const [isClicked, setIsClicked] = useState(false)
 
 
   const onChange = (e) => {
     setCampusInfo({ ...campusInfo, [e.target.name]: e.target.value });
   };
 
-  // just used to log text onchange
   useEffect(() => {
     console.log(campusInfo);
   }, [campusInfo]);
 
-//   useEffect(() => {
-//     if (isClicked) {
-//         dispatch(createNewCampusThunk());
-//         navigate("/campuses");
-//     }
-//   }, [])
 
   const handleClick = (e) => {
     e.preventDefault();
     createNewCampus();
-    // setIsClicked(true)
     navigate("/campuses")
   };
 

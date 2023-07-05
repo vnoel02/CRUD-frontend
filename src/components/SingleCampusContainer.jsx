@@ -1,31 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CampusStudents from "./CampusStudents";
 
-const SingleCampusContainer = (props) => {
-  return props.list ? (
-    props.list.map((campus) => {
-      return (
-        <div key={campus.id}>
-          <div id="singlecampus" key={campus.id}>
-            <h2>{campus.name}</h2>
-            <h2> {campus.description}</h2>
-            <h2> {campus.address}</h2>
-            <img
-              className="campus-img"
-              src={campus.imageUrl}
-              alt="campus img"
-            ></img>
-          </div>
-            <Link to={`/campuses/${campus.id}/edit`} state={campus} >
-                <button>Edit Campus</button>
-            </Link>
-          
-        </div>
-      );
-    })
-  ) : (
-    <h1>...Loading</h1>
+// Data of single campus passed as prop to this component
+const SingleCampusContainer = (props) => { 
+  // console.log(props.campus.students)
+  return (
+    <div>
+      <div id="singlecampus">
+        <h1>{props.campus.name}</h1>
+        <h2> {props.campus.description}</h2>
+        <h2> {props.campus.address}</h2>
+        <img
+          className="campus-img"
+          src={props.campus.imageUrl}
+          alt="campus img"
+        ></img>
+      </div>
+      {/* A button to edit campus. Redirects to another page */}
+      <Link to={`/campuses/${props.campus.id}/edit`} state={props.campus}>
+        <button>Edit Campus</button>
+      </Link>
+      <h2> Students on this Campus</h2>
+      {
+      props.campus.students && props.campus.students.length > 0 ? (
+        //Displays list of students
+        <CampusStudents list={props.campus.students} forceUpdate={props.forceUpdate} />
+      ) : (
+        <h4> No students</h4>
+      )}
+    </div>
   );
-};
+}; 
 
 export default SingleCampusContainer;
