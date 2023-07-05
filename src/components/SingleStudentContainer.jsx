@@ -1,14 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ListCampuses from "./ListCampuses";
 
 // From SingleCampus.jsx
 const SingleStudentContainer = (props) => {
-  //   return props.list ? (
-  // props.list.map((student) => {
-    props.student.campus ? 
-    console.log(props.student.campus.id) :
-    console.log("Loading...");
   return (
     <div>
       <div id="singlecampus">
@@ -27,12 +21,14 @@ const SingleStudentContainer = (props) => {
         <button>Edit Student</button>
       </Link>
 
-    <h2> This student is registered to this campus</h2>
-      {props.student.campus? (
-        <Link to={`/campuses/${props.student.campus.id}`} state={props.student.campus.id}>
-        <h3> {props.student.campus.name}</h3>
+      <h2> This student is registered to this campus</h2>
+      {props.student.campus ? (
+        <Link
+          to={`/campuses/${props.student.campus.id}`}
+          state={props.student.campus.id}
+        >
+          <h3> {props.student.campus.name}</h3>
         </Link>
-        
       ) : (
         <h4> No campuses registered</h4>
       )}

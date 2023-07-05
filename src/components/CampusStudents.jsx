@@ -10,15 +10,20 @@ import { useReducer } from "react";
 const CampusStudents = (props) => {
     const dispatch = useDispatch();
     
-    
-
-
     const onClick = (id, e) => {
       e.preventDefault();
-      dispatch(removeStudentThunk(id)).then(() => {
-        dispatch(fetchSingleStudentThunk(id));
-      });
-      props.rerender();
+      dispatch(removeStudentThunk(id))
+    //   .then(() => {
+    //     dispatch(fetchSingleStudentThunk(id));
+    //   });
+      console.log("FORCING UPDATE");
+      setTimeout(() => {
+        alert("Deleting...");
+        props.forceUpdate();
+      }, 500);
+     
+      props.forceUpdate();
+      
     };
   
     console.log("List students component");

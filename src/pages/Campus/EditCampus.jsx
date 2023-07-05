@@ -39,10 +39,8 @@ const EditCampus = () => {
   const handleClick = (e) => {
     e.preventDefault();
     updateCampus();
-    // setIsClicked(true)
-    // dispatch(fetchSingleCampusThunk(campusID));
     setTimeout(()=> {
-        alert("Confirm Edit")
+        alert("Editing Campus...")
         navigate(-1); 
     }, 500)
       

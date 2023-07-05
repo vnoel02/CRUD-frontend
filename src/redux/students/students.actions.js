@@ -25,25 +25,25 @@ export const deleteStudent = (payload) => {
 };
 
 export const fetchSingleStudent = (payload) => {
-    return {
-        type: StudentActionTypes.FETCH_SINGLE_STUDENT,
-        payload: payload,
-    }
-}
+  return {
+    type: StudentActionTypes.FETCH_SINGLE_STUDENT,
+    payload: payload,
+  };
+};
 
 export const updateStudent = (payload) => {
-    return {
-        type: StudentActionTypes.UPDATE_STUDENT,
-        payload: payload
-    }
-} 
+  return {
+    type: StudentActionTypes.UPDATE_STUDENT,
+    payload: payload,
+  };
+};
 
 export const removeStudent = (payload) => {
-    return {
-        type: StudentActionTypes.REMOVE_STUDENT_CAMPUS,
-        payload: payload
-    }
-}
+  return {
+    type: StudentActionTypes.REMOVE_STUDENT_CAMPUS,
+    payload: payload,
+  };
+};
 /*thunks for api calls------------------------------------------------------------------------------------------------
 *
 *
@@ -100,49 +100,58 @@ export const deleteStudentThunk = (id, studentInfo) => {
 };
 
 export const fetchSingleStudentThunk = (id) => {
-    return async (dispatch) => {
-        try {
-            console.log("Fetch single student thunk is firing");
-            const response = await axios.get(`http://localhost:4000/api/students/get/${id}`)
-            console.log("fetch single student thunk is firing");
-            dispatch(fetchSingleStudent(response.data));
-        } catch (error) {
-            console.error(error);
-        }
+  return async (dispatch) => {
+    try {
+      console.log("Fetch single student thunk is firing");
+      const response = await axios.get(
+        `http://localhost:4000/api/students/get/${id}`
+      );
+      console.log("fetch single student thunk is firing");
+      dispatch(fetchSingleStudent(response.data));
+    } catch (error) {
+      console.error(error);
     }
-}
+  };
+};
 
 export const updateStudentThunk = (studentId, studentInfo) => {
-    return async (dispatch) => {
-        try {
-            console.log("Update student thunk firing");
-            const response = await axios.put(`http://localhost:4000/api/students/edit/${studentId}`, {
-                firstName: studentInfo.firstName,
-                lastName: studentInfo.lastName,
-                email: studentInfo.email,
-                GPA: studentInfo.GPA,
-                imageUrl: studentInfo.imageUrl,
-                campusId: studentInfo.campusId
-            });
-            console.log("Update student thunk completed")
-            dispatch(updateStudent(response.data));
-        } catch (error) {
-            console.error(error);
+  return async (dispatch) => {
+    try {
+      console.log("Update student thunk firing");
+      const response = await axios.put(
+        `http://localhost:4000/api/students/edit/${studentId}`,
+        {
+          firstName: studentInfo.firstName,
+          lastName: studentInfo.lastName,
+          email: studentInfo.email,
+          GPA: studentInfo.gpa,
+          imageUrl: studentInfo.imageUrl,
+          campusId: studentInfo.campusId,
         }
+      );
+      console.log("Test", studentInfo.gpa);
+      console.log("Update student thunk completed");
+      dispatch(updateStudent(response.data));
+    } catch (error) {
+      console.error(error);
     }
-}
+  };
+};
 
 export const removeStudentThunk = (studentId) => {
-    return async (dispatch) => {
-        try {
-            console.log("Remove student thunk firing");
-            const response = await axios.put(`http://localhost:4000/api/students/edit/${studentId}`, {
-                campusId: null
-            })
-            console.log("Remove Student Thunk completed");
-            dispatch(removeStudent(response.data));
-        } catch (error) {
-            console.error(error);
+  return async (dispatch) => {
+    try {
+      console.log("Remove student thunk firing");
+      const response = await axios.put(
+        `http://localhost:4000/api/students/edit/${studentId}`,
+        {
+          campusId: null,
         }
+      );
+      console.log("Remove Student Thunk completed");
+      dispatch(removeStudent(response.data));
+    } catch (error) {
+      console.error(error);
     }
-}
+  };
+};

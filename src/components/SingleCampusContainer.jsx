@@ -4,18 +4,7 @@ import ListStudents from "./ListStudents";
 import CampusStudents from "./CampusStudents";
 import { useReducer } from "react";
 
-const SingleCampusContainer = (props) => {
-  // const [render, setRerender] = useState(false);
-  // const rerender = () => {
-  //   setRerender(!rerender);
-  // }
-  
-
-
-  // return props.list ? (
-  // campus.campus.map((campus) => {
-  // console.log("Hello", props.campus);
- 
+const SingleCampusContainer = (props) => { 
   console.log(props.campus.students)
   return (
     <div>
@@ -34,23 +23,9 @@ const SingleCampusContainer = (props) => {
       </Link>
       <h2> Students on this Campus</h2>
 
-      {/* {props.campus.students && props.campus.students.length > 0 ? (
-        props.campus.students.map((students) => {
-          console.log("Hello", students);
-          return (
-            
-            <div key={students.id}>
-              {" "}
-              <ListStudents props={students} />
-            </div>
-          );
-        })
-      ) : (
-        <h4> No students</h4>
-      )} */}
       {
       props.campus.students && props.campus.students.length > 0 ? (
-        <CampusStudents list={props.campus.students} rerender={props.rerender} />
+        <CampusStudents list={props.campus.students} forceUpdate={props.forceUpdate} />
       ) : (
         <h4> No students</h4>
       )}

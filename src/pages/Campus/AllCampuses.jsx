@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
 import ListCampuses from "../../components/ListCampuses";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar";
+
 
 const AllCampuses = () => {
   // Contains state of all campuses
