@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import ListStudents from "./ListStudents";
 import CampusStudents from "./CampusStudents";
-import { useReducer } from "react";
 
+// Data of single campus passed as prop to this component
 const SingleCampusContainer = (props) => { 
-  console.log(props.campus.students)
+  // console.log(props.campus.students)
   return (
     <div>
       <div id="singlecampus">
@@ -18,23 +17,20 @@ const SingleCampusContainer = (props) => {
           alt="campus img"
         ></img>
       </div>
+      {/* A button to edit campus. Redirects to another page */}
       <Link to={`/campuses/${props.campus.id}/edit`} state={props.campus}>
         <button>Edit Campus</button>
       </Link>
       <h2> Students on this Campus</h2>
-
       {
       props.campus.students && props.campus.students.length > 0 ? (
+        //Displays list of students
         <CampusStudents list={props.campus.students} forceUpdate={props.forceUpdate} />
       ) : (
         <h4> No students</h4>
       )}
     </div>
   );
-}; //)
-// ) : (
-//   <h1>...Loading</h1>
-// );
-// };
+}; 
 
 export default SingleCampusContainer;

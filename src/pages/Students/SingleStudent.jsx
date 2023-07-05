@@ -6,32 +6,28 @@ import SingleStudentContainer from "../../components/SingleStudentContainer";
 import { useState } from "react";
 
 const SingleStudent = () => {
+  const location = useLocation();
+  const propsData = location.state;
 
+  const singleStudent = useSelector((state) => state.students.singleStudent);
+  const dispatch = useDispatch();
 
+  const fetchSingleStudent = () => {
+    console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS");
+    console.log(`Using ${propsData} for dispatch`);
+    dispatch(fetchSingleStudentThunk(propsData));
+  };
 
-   
-    const location = useLocation();
-    const propsData = location.state;
-
-    const singleStudent = useSelector((state)=> state.students.singleStudent)
-    const dispatch = useDispatch();
-
-    const fetchSingleStudent = () => {
-        console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS")
-        console.log(`Using ${propsData} for dispatch`)
-        dispatch(fetchSingleStudentThunk(propsData));
-    }
-
-    useEffect(() => {
-        console.log("USEEFFECT FIRING FETCHSINGLECAMPUS")
-        console.log(singleStudent)
-        fetchSingleStudent();
-    }, [])
+  useEffect(() => {
+    console.log("USEEFFECT FIRING FETCHSINGLECAMPUS");
+    console.log(singleStudent);
+    fetchSingleStudent();
+  }, []);
   return (
     <div>
-        <SingleStudentContainer student={singleStudent}/>
+      <SingleStudentContainer student={singleStudent} />
     </div>
-  )
-}
+  );
+};
 
-export default SingleStudent
+export default SingleStudent;

@@ -128,15 +128,6 @@ const EditStudent = () => {
             ></input>
           </label>
 
-          {/* <label>
-            {" "}
-            Campus - ID
-            <input name="campusId" 
-            type="number" 
-            onChange={onChange}
-            defaultValue={studentCampusID}></input>
-          </label> */}
-
           <label>
             {" "}
             Campus

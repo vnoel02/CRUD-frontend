@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import {
-  updateCampusThunk,
-} from "../../redux/campuses/campus.actions";
+import { updateCampusThunk } from "../../redux/campuses/campus.actions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // data is coming from SingleCampusContainer
 const EditCampus = () => {
-  
   const location = useLocation();
   const campusID = location.state.id;
   const campusName = location.state.name;
@@ -39,16 +35,15 @@ const EditCampus = () => {
   const handleClick = (e) => {
     e.preventDefault();
     updateCampus();
-    setTimeout(()=> {
-        alert("Editing Campus...")
-        navigate(-1); 
-    }, 500)
-      
+    setTimeout(() => {               //Timeout acts as a loading button. To give time to fetch redux store
+      alert("Editing Campus...");
+      navigate(-1);
+    }, 500);
   };
 
   const updateCampus = () => {
     console.log(campusID);
-    dispatch(updateCampusThunk(campusID, campusInfo))
+    dispatch(updateCampusThunk(campusID, campusInfo));
   };
 
   return (
@@ -59,27 +54,32 @@ const EditCampus = () => {
           <label>
             {" "}
             Campus - Name
-            <input name="name" 
-            type="text" 
-            defaultValue={campusName} 
-            onChange={onChange}></input>
+            <input
+              name="name"
+              type="text"
+              defaultValue={campusName}
+              onChange={onChange}
+            ></input>
           </label>
 
           <label>
             {" "}
             Campus - Address
-            <input name="address" 
-            type="text" 
-            defaultValue={campusAddress} 
-            onChange={onChange}></input>
+            <input
+              name="address"
+              type="text"
+              defaultValue={campusAddress}
+              onChange={onChange}
+            ></input>
           </label>
 
           <label>
             {" "}
             Campus - Image Url
-            <input name="imageUrl" 
-            onChange={onChange} 
-            defaultValue= {campusImageUrl}
+            <input
+              name="imageUrl"
+              onChange={onChange}
+              defaultValue={campusImageUrl}
             ></input>
           </label>
 
@@ -91,7 +91,7 @@ const EditCampus = () => {
               id="textbox"
               type="text"
               onChange={onChange}
-              defaultValue = {campusDesc}
+              defaultValue={campusDesc}
             ></textarea>
           </label>
         </form>

@@ -19,7 +19,6 @@ const CreateNewStudent = () => {
     gpa: "",
   });
 
-
   const onChange = (e) => {
     setStudentInfo({ ...studentInfo, [e.target.name]: e.target.value });
   };
@@ -28,26 +27,26 @@ const CreateNewStudent = () => {
     console.log(studentInfo);
   }, [studentInfo]);
 
-
   const handleClick = (e) => {
     e.preventDefault();
     createNewStudent();
-    // setIsClicked(true)
-    navigate("/students")
+    navigate("/students");
   };
 
   const createNewStudent = () => {
     console.log("RUNNING DISPATCH FOR NEW CAMPUS");
     console.log(studentInfo);
-    dispatch(createNewStudentThunk(studentInfo)).then(() => dispatch(fetchAllStudentsThunk()));
+    dispatch(createNewStudentThunk(studentInfo)).then(() =>
+      dispatch(fetchAllStudentsThunk())
+    );
   };
 
   return (
     <div>
       <h1>Create New Student</h1>
       <div>
-        <form >
-        <label>
+        <form>
+          <label>
             {" "}
             First Name
             <input name="firstName" type="text" onChange={onChange}></input>

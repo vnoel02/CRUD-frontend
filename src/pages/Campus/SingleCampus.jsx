@@ -6,12 +6,14 @@ import SingleCampusContainer from "../../components/SingleCampusContainer";
 import { useReducer } from "react";
 
 function SingleCampus() {
+  // This useReducer hook is done to rerender when removing a student from campus
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   // Using useLocation hook to pass prop through link from ListCampuses containter
   const location = useLocation();
   const propsData = location.state;
-  console.log(propsData);
+  // console.log(propsData);
 
+  // Going to redux store for single campus state
   const singleCampus = useSelector((state) => state.campuses.singleCampus);
   const dispatch = useDispatch();
   const fetchSingleCampus = () => {
@@ -29,6 +31,7 @@ function SingleCampus() {
   return (
     <div>
       <div>
+        {/* Passes method to force rerender and data from single campus state into container */}
         <SingleCampusContainer
           campus={singleCampus}
           forceUpdate={forceUpdate}

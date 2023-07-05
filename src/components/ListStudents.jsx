@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Routes, Route, Link } from "react-router-dom";
-
-import SingleCampus from "../pages/Campus/SingleCampus";
-import { deleteStudentThunk, fetchAllStudentsThunk } from "../redux/students/students.actions";
+import { Link } from "react-router-dom";
+import {
+  deleteStudentThunk,
+  fetchAllStudentsThunk,
+} from "../redux/students/students.actions";
 
 export const ListStudents = (props) => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ export const ListStudents = (props) => {
 
   console.log("List students component");
   console.log(props.list);
-  return props.list ? (
+  return props.list && props.list.length > 0 ? (
     props.list.map((student) => {
-      console.log(`Hello ${student.campus}`)
+      console.log(`Hello ${student.campus}`);
       return (
         <div className="campus-container" key={student.id}>
           <img
@@ -29,16 +30,17 @@ export const ListStudents = (props) => {
           ></img>
           {/* Uses name to go to single campus page */}
           <Link to={`/students/${student.id}`} state={student.id}>
-            <h2>{student.firstName} {student.lastName}</h2>
+            <h2>
+              {student.firstName} {student.lastName}
+            </h2>
           </Link>
-          
-          <button onClick={(e) => onClick(student.id, e)}>X</button>
 
+          <button onClick={(e) => onClick(student.id, e)}>X</button>
         </div>
       );
     })
   ) : (
-    <h1>...Loading</h1>
+    <h1> No students available</h1>
   );
 };
 export default ListStudents;

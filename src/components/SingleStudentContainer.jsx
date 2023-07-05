@@ -21,7 +21,7 @@ const SingleStudentContainer = (props) => {
         <button>Edit Student</button>
       </Link>
 
-      <h2> This student is registered to this campus</h2>
+      <h2> This student is registered to this campus.</h2>
       {props.student.campus ? (
         <Link
           to={`/campuses/${props.student.campus.id}`}
@@ -34,9 +34,6 @@ const SingleStudentContainer = (props) => {
       )}
     </div>
   );
-}; //)
-//   ) : (
-//     <h1>...Loading</h1>
-//   );
+};
 
 export default SingleStudentContainer;
