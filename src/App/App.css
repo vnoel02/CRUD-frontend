@@ -385,3 +385,8 @@ div#campus-select {
   width: 40%;
   float:right;
 }
+
+span {
+  color:red;
+  font-size: small;
+}

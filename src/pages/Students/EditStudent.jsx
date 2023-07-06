@@ -6,11 +6,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { fetchAllCampusesThunk } from "../../redux/campuses/campus.actions";
+import validator from "validator";
 
 // A decent idea would be having text autofill from previous student info when editing
 const EditStudent = () => {
   const location = useLocation();
   const allCampuses = useSelector((state) => state.campuses.allCampuses);
+  const [emailError, setEmailError] = useState('')
 
   const fetchAllCampuses = () => {
     console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
@@ -36,6 +38,7 @@ const EditStudent = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   const [studentInfo, setStudentInfo] = useState({
     firstName: studentFirstName,
@@ -52,21 +55,42 @@ const EditStudent = () => {
 
   const onChange = (e) => {
     setStudentInfo({ ...studentInfo, [e.target.name]: e.target.value });
+    
   };
 
   const handleClick = (e) => {
-    e.preventDefault();
-    updateStudent();
-    setTimeout(() => {
-      alert("Editing Student...");
-      navigate(-1);
-    }, 500);
+    if(emailError.length > 0) {
+      alert("Incorrect Email")
+    } else {
+      e.preventDefault();
+      updateStudent();
+      setTimeout(() => {
+        alert("Editing Student...");
+        navigate(-1);
+      }, 500);
+    }
+   
   };
 
   const updateStudent = () => {
     console.log(studentId);
     dispatch(updateStudentThunk(studentId, studentInfo));
   };
+
+  const validateEmail = (e) => {
+    var email = e.target.value
+  
+    if (validator.isEmail(email)) {
+      setEmailError('')
+    } else {
+      setEmailError('Enter valid Email!')
+    }
+  }
+
+  const emailChange = (e) => {
+    onChange(e);
+    validateEmail(e);
+  }
 
   return (
     <div className="form-container">
@@ -93,9 +117,10 @@ const EditStudent = () => {
           <input
             name="email"
             type="text"
-            onChange={onChange}
+            onChange={(e) => emailChange(e)}
             defaultValue={studentEmail}
           ></input>
+          <span>{emailError}</span>
 
           <label> Student - Image Url</label>
           <input
