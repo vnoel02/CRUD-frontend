@@ -24,7 +24,7 @@ export const ListStudents = (props) => {
       .map((student) => {
         console.log(`Hello ${student.campus}`);
         return (
-          <div>
+          
             <div className="students-container" key={student.id}>
             <Link to={`/students/${student.id}`} state={student.id}>
               <img
@@ -43,7 +43,7 @@ export const ListStudents = (props) => {
             </button>
             </div>
             
-          </div>
+         
         );
       })
   ) : (
