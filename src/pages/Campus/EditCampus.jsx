@@ -35,7 +35,8 @@ const EditCampus = () => {
   const handleClick = (e) => {
     e.preventDefault();
     updateCampus();
-    setTimeout(() => {               //Timeout acts as a loading button. To give time to fetch redux store
+    setTimeout(() => {
+      //Timeout acts as a loading button. To give time to fetch redux store
       alert("Editing Campus...");
       navigate(-1);
     }, 500);
@@ -47,53 +48,41 @@ const EditCampus = () => {
   };
 
   return (
-    <div>
-      <h1> Edit Campus</h1>
-      <div className="form-container">
+    <div className="form-container">
+      <div >
+        <h1> Edit Campus</h1>
         <form id="addcampus">
-          <label>
-            {" "}
-            Campus - Name
-            <input
-              name="name"
-              type="text"
-              defaultValue={campusName}
-              onChange={onChange}
-            ></input>
-          </label>
+          <label> Campus - Name</label>
+          <input
+            name="name"
+            type="text"
+            defaultValue={campusName}
+            onChange={onChange}
+          ></input>
 
-          <label>
-            {" "}
-            Campus - Address
-            <input
-              name="address"
-              type="text"
-              defaultValue={campusAddress}
-              onChange={onChange}
-            ></input>
-          </label>
+          <label> Campus - Address</label>
+          <input
+            name="address"
+            type="text"
+            defaultValue={campusAddress}
+            onChange={onChange}
+          ></input>
 
-          <label>
-            {" "}
-            Campus - Image Url
-            <input
-              name="imageUrl"
-              onChange={onChange}
-              defaultValue={campusImageUrl}
-            ></input>
-          </label>
+          <label> Campus - Image Url</label>
+          <input
+            name="imageUrl"
+            onChange={onChange}
+            defaultValue={campusImageUrl}
+          ></input>
 
-          <label>
-            {" "}
-            Campus - Description
-            <textarea
-              name="description"
-              id="textbox"
-              type="text"
-              onChange={onChange}
-              defaultValue={campusDesc}
-            ></textarea>
-          </label>
+          <label> Campus - Description</label>
+          <textarea
+            name="description"
+            id="textbox"
+            type="text"
+            onChange={onChange}
+            defaultValue={campusDesc}
+          ></textarea>
         </form>
 
         <button id="addcampusbtn" onClick={handleClick}>

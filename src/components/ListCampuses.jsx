@@ -18,7 +18,8 @@ export const ListCampuses = (props) => {
   };
 
   return props.list && props.list.length > 0 ? (
-    props.list.map((campus) => {
+    props.list.sort((a,b)=> a.id > b.id? 1: -1) 
+    .map((campus) => {
       return (
         <div className="campus-container" key={campus.id}>
           {/* Each campus has a link to its single view */}
@@ -31,7 +32,7 @@ export const ListCampuses = (props) => {
             alt="campus img"
           ></img>
           {/* Delete button */}
-          <button onClick={(e) => onClick(campus.id, e)}> X </button>
+          <button className="delete" onClick={(e) => onClick(campus.id, e)}> X </button>
         </div>
       );
     })

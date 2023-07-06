@@ -26,18 +26,17 @@ const AllCampuses = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+      <div className="allcampuses-container">
         {/* Redirects to create a campus page */}
-        <Link to="/newcampus/">
-          <button>Add New Campus</button>
+        <Link className="add" to="/newcampus/">
+          <button className="add-item">Add New Campus</button>
         </Link>
 
         {/* Child component that lists out all the campuses */}
         <h1>All Campuses</h1>
         <ListCampuses list={allCampuses} />
       </div>
-    </div>
+    
   );
 };
 

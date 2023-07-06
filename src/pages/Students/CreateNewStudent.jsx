@@ -7,10 +7,12 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 
 const CreateNewStudent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [emailError, setEmailError] = useState("");
 
   const [studentInfo, setStudentInfo] = useState({
     firstName: "",
@@ -29,8 +31,17 @@ const CreateNewStudent = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    createNewStudent();
-    navigate("/students");
+    if (emailError.length > 0) {
+      alert("Incorrect Email");
+    } else if (
+      studentInfo.firstName.length === 0 ||
+      studentInfo.lastName.length === 0
+    ) {
+      alert("Missing Student's first and last name");
+    } else {
+      createNewStudent();
+      navigate("/students");
+    }
   };
 
   const createNewStudent = () => {
@@ -41,8 +52,23 @@ const CreateNewStudent = () => {
     );
   };
 
+  const validateEmail = (e) => {
+    var email = e.target.value;
+
+    if (validator.isEmail(email)) {
+      setEmailError("");
+    } else {
+      setEmailError("Enter valid Email!");
+    }
+  };
+
+  const emailChange = (e) => {
+    onChange(e);
+    validateEmail(e);
+  };
+
   return (
-    <div>
+    <div className="form-container">
       <h1>Create New Student</h1>
       <div>
         <form>
@@ -61,7 +87,12 @@ const CreateNewStudent = () => {
           <label>
             {" "}
             E-mail
-            <input name="email" type="text" onChange={onChange}></input>
+            <input
+              name="email"
+              type="text"
+              onChange={(e) => emailChange(e)}
+            ></input>
+            <span>{emailError}</span>
           </label>
 
           <label>
