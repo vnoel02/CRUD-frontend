@@ -31,7 +31,7 @@ export const ListCampuses = (props) => {
             alt="campus img"
           ></img>
           {/* Delete button */}
-          <button onClick={(e) => onClick(campus.id, e)}> X </button>
+          <button className="delete" onClick={(e) => onClick(campus.id, e)}> X </button>
         </div>
       );
     })

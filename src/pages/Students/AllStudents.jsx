@@ -23,10 +23,11 @@ const AllStudents = () => {
   return (
     <div>
       <div>
-        <h1>AllStudents</h1>
+        
         <Link to="/newstudent">
-          <button>Add New Student</button>
+          <button className="add-item">Add New Student</button>
         </Link>
+        <h1>AllStudents</h1>
         <ListStudents list={allStudents} />
       </div>
     </div>

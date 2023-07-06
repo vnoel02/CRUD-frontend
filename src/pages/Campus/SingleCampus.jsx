@@ -30,6 +30,7 @@ function SingleCampus() {
 
   return (
     <div>
+      
       <div>
         {/* Passes method to force rerender and data from single campus state into container */}
         <SingleCampusContainer

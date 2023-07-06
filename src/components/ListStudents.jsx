@@ -22,7 +22,7 @@ export const ListStudents = (props) => {
     props.list.map((student) => {
       console.log(`Hello ${student.campus}`);
       return (
-        <div className="campus-container" key={student.id}>
+        <div className="students-container" key={student.id}>
           <img
             className="student-img"
             src={student.imageUrl}
@@ -35,7 +35,7 @@ export const ListStudents = (props) => {
             </h2>
           </Link>
 
-          <button onClick={(e) => onClick(student.id, e)}>X</button>
+          <button className="delete"onClick={(e) => onClick(student.id, e)}>X</button>
         </div>
       );
     })

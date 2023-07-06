@@ -42,32 +42,39 @@ export const CreateNewCampus = () => {
   };
 
   return (
-    <div>
+    <div className="newcampus-container">
       <h1>Create New Campus</h1>
-      <div className="form-container">
-        <form id="addcampus">
+      <div 
+      // className="form-container"
+      >
+        <form 
+        // id="addcampus"
+        >
           <label>
             {" "}
             Campus - Name
+            </label>
             <input name="name" type="text" onChange={onChange}></input>
-          </label>
+          
 
           <label>
             {" "}
             Campus - Address
+            </label>
             <input name="address" type="text" onChange={onChange}></input>
-          </label>
+          
 
           <label>
             {" "}
             Campus - Description
+            </label>
             <textarea
               name="description"
               id="textbox"
               type="text"
               onChange={onChange}
             ></textarea>
-          </label>
+          
         </form>
 
         <button id="addcampusbtn" onClick={handleClick}>
