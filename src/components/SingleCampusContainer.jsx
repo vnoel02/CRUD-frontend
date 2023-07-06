@@ -21,10 +21,13 @@ const SingleCampusContainer = (props) => {
           <h4> {props.campus.address}</h4>
         </div>
       </div>
-      {/* A button to edit campus. Redirects to another page */}
-      <Link to={`/campuses/${props.campus.id}/edit`} state={props.campus}>
-        <button>Edit Campus</button>
+
+      <div className="edit-button-container">
+       {/* A button to edit campus. Redirects to another page */}
+       <Link to={`/campuses/${props.campus.id}/edit`} state={props.campus}>
+        <button className="edit">Edit Campus</button>
       </Link>
+      </div>
 
       <div id="campuses-students">
         <h2> Students on this Campus</h2>

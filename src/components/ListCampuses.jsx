@@ -18,7 +18,8 @@ export const ListCampuses = (props) => {
   };
 
   return props.list && props.list.length > 0 ? (
-    props.list.map((campus) => {
+    props.list.sort((a,b)=> a.id > b.id? 1: -1) 
+    .map((campus) => {
       return (
         <div className="campus-container" key={campus.id}>
           {/* Each campus has a link to its single view */}

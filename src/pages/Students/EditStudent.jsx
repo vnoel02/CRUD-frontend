@@ -69,76 +69,71 @@ const EditStudent = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Edit Student</h1>
       <div>
-        <form>
-          <label>
-            {" "}
-            First Name
-            <input
-              name="firstName"
-              type="text"
-              onChange={onChange}
-              defaultValue={studentFirstName}
-            ></input>
-          </label>
+        <form id="edit-student">
+          <label> First Name</label>
+          <input
+            name="firstName"
+            type="text"
+            onChange={onChange}
+            defaultValue={studentFirstName}
+          ></input>
 
-          <label>
-            {" "}
-            Last Name
-            <input
-              name="lastName"
-              type="text"
-              onChange={onChange}
-              defaultValue={studentLastName}
-            ></input>
-          </label>
+          <label> Last Name</label>
+          <input
+            name="lastName"
+            type="text"
+            onChange={onChange}
+            defaultValue={studentLastName}
+          ></input>
 
-          <label>
-            {" "}
-            E-mail
-            <input
-              name="email"
-              type="text"
-              onChange={onChange}
-              defaultValue={studentEmail}
-            ></input>
-          </label>
+          <label> E-mail</label>
+          <input
+            name="email"
+            type="text"
+            onChange={onChange}
+            defaultValue={studentEmail}
+          ></input>
 
-          <label>
-            {" "}
-            Student - Image Url
-            <input
-              name="imageUrl"
-              onChange={onChange}
-              defaultValue={studentImageUrl}
-            ></input>
-          </label>
+          <label> Student - Image Url</label>
+          <input
+            name="imageUrl"
+            onChange={onChange}
+            defaultValue={studentImageUrl}
+          ></input>
 
-          <label>
-            {" "}
-            GPA
-            <input
-              name="gpa"
-              type="number"
-              onChange={onChange}
-              step="0.1"
-              defaultValue={studentGPA}
-            ></input>
-          </label>
+          <div id="gpa-container">
+          <label> GPA</label>
+          <input
+            name="gpa"
+            type="number"
+            onChange={onChange}
+            step="0.1"
+            defaultValue={studentGPA}
+          ></input>
 
-          <label>
-            {" "}
-            Campus
-            {" "}
-            <select name="campusId" onChange={onChange}>
-              <option value={null}> No campus</option>
-              {allCampuses.map((campus) => {
-                return <option  key={campus.id} value={campus.id} > {campus.id} - {campus.name}</option>;
-              })}
-            </select>
-          </label>
+          </div>
+          
+
+          <div id="campus-select">
+          <label> Campus</label>
+          <select name="campusId" onChange={onChange}>
+            <option value={null}> NO CAMPUS</option>
+            {allCampuses.sort((a,b)=> a.id > b.id? 1: -1)
+            .map((campus) => {
+              return (
+                <option key={campus.id} value={campus.id}>
+                  {" "}
+                  {campus.id} - {campus.name}
+                </option>
+              );
+            })}
+          </select>
+
+          </div>
+          
         </form>
 
         <button id="addcampusbtn" onClick={handleClick}>

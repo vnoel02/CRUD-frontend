@@ -21,15 +21,14 @@ const AllStudents = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className="allstudents-container">
         
         <Link to="/newstudent">
           <button className="add-item">Add New Student</button>
         </Link>
-        <h1>AllStudents</h1>
+        <h1>All Students</h1>
         <ListStudents list={allStudents} />
-      </div>
+
     </div>
   );
 };

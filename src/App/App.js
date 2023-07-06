@@ -14,7 +14,7 @@ import Navbar from "../components/Navbar";
 function App() {
   return (
     <Router>
-      <div clasName="nav-container">
+      <div className="nav-container">
       <Navbar/>
       </div>
       

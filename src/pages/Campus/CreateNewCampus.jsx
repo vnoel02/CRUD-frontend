@@ -42,7 +42,7 @@ export const CreateNewCampus = () => {
   };
 
   return (
-    <div className="newcampus-container">
+    <div className="form-container">
       <h1>Create New Campus</h1>
       <div 
       // className="form-container"

@@ -42,7 +42,7 @@ const CreateNewStudent = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Create New Student</h1>
       <div>
         <form>
