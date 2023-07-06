@@ -39,7 +39,7 @@ const SingleStudentContainer = (props) => {
             state={props.student.campus.id}
           >
             <div id="registered">
-              <img src={props.student.campus.imageUrl}></img>
+              <img src={props.student.campus.imageUrl} alt="campus"></img>
               <h3> {props.student.campus.name}</h3>
             </div>
           </Link>

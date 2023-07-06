@@ -21,9 +21,10 @@ const AllCampuses = () => {
   // Fetches all the campuses
   useEffect(() => {
     console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
-    console.log(allCampuses);
+    // console.log(allCampuses);
     fetchAllCampuses();
-  }, []);
+  }, []) // eslint-disable-next-line react-hooks/exhaustive-deps
+  
 
   return (
       <div className="allcampuses-container">
