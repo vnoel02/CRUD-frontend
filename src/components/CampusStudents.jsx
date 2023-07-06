@@ -25,23 +25,25 @@ const CampusStudents = (props) => {
     props.list.map((student) => {
       console.log(`Hello ${student.campus}`);
       return (
-        <div className="campus-container" key={student.id}>
-          <img
-            className="student-img"
-            src={student.imageUrl}
-            alt="student img"
-          ></img>
-          {/* Uses name to go to single campus page */}
-          <Link to={`/students/${student.id}`} state={student.id}>
-            <h2>
-              {student.firstName} {student.lastName}
-            </h2>
-          </Link>
-          {/* For removing a student from campus. It simply changes the campus id to null for a student */}
-          <button onClick={(e) => onClick(student.id, e)}>
-            {" "}
-            Remove Student from Campus
-          </button>
+        <div>
+          <div className="campus-container" key={student.id}>
+            <Link to={`/students/${student.id}`} state={student.id}>
+            <img
+              className="student-img"
+              src={student.imageUrl}
+              alt="student img"
+            ></img>
+            
+              <h2>
+                {student.firstName} {student.lastName}
+              </h2>
+            </Link>
+            {/* For removing a student from campus. It simply changes the campus id to null for a student */}
+            <button id="remove" onClick={(e) => onClick(student.id, e)}>
+              {" "}
+              Remove Student from Campus
+            </button>
+          </div>
         </div>
       );
     })
