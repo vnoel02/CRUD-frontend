@@ -10,13 +10,13 @@ const AllStudents = () => {
   const dispatch = useDispatch();
 
   const fetchStudents = () => {
-    console.log("Sending dispatch from fetchStudents");
+//    console.log("Sending dispatch from fetchStudents");
     dispatch(fetchAllStudentsThunk());
   };
 
   useEffect(() => {
-    console.log("Calling fetchStudents in useEffect");
-    console.log(allStudents);
+//    console.log("Calling fetchStudents in useEffect");
+//    console.log(allStudents);
     fetchStudents();
   }, []);
 

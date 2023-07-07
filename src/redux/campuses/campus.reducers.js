@@ -10,7 +10,7 @@ export const INITIAL_STATE = {
 
 // action => {type, payload}, remember fetchAllCampuses function/action creator
 const campusReducer = (state = INITIAL_STATE, action) => {
-  console.log("IN CAMPUSREDUCER HANDLING ACTIONS");
+//  console.log("IN CAMPUSREDUCER HANDLING ACTIONS");
   switch (action.type) {
     case CampusActionType.FETCH_ALL_CAMPUSES:
       return {

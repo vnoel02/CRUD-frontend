@@ -26,7 +26,7 @@ const CreateNewStudent = () => {
   };
 
   useEffect(() => {
-    console.log(studentInfo);
+//    console.log(studentInfo);
   }, [studentInfo]);
 
   const handleClick = (e) => {
@@ -45,8 +45,8 @@ const CreateNewStudent = () => {
   };
 
   const createNewStudent = () => {
-    console.log("RUNNING DISPATCH FOR NEW CAMPUS");
-    console.log(studentInfo);
+//    console.log("RUNNING DISPATCH FOR NEW CAMPUS");
+//    console.log(studentInfo);
     dispatch(createNewStudentThunk(studentInfo)).then(() =>
       dispatch(fetchAllStudentsThunk())
     );

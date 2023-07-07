@@ -14,14 +14,14 @@ const AllCampuses = () => {
   const dispatch = useDispatch();
 
   const fetchAllCampuses = () => {
-    console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
+//    console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
     dispatch(fetchAllCampusesThunk());
   };
 
   // Fetches all the campuses
   useEffect(() => {
-    console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
-    // console.log(allCampuses);
+//    console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
+//    // console.log(allCampuses);
     fetchAllCampuses();
   }, []) // eslint-disable-next-line react-hooks/exhaustive-deps
   

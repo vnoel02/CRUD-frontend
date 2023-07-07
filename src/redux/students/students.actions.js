@@ -1,9 +1,14 @@
 import axios from "axios";
 import StudentActionTypes from "./students.types";
 
+const backend_url = process.env.REACT_APP_BACKEND_URL;
+
+
+
+
 //action creators
 export const fetchAllStudents = (payload) => {
-  console.log("Fetch all students action");
+//  console.log("Fetch all students action");
   return {
     type: StudentActionTypes.FETCH_ALL_STUDENTS,
     payload: payload,
@@ -53,12 +58,12 @@ export const removeStudent = (payload) => {
 export const fetchAllStudentsThunk = () => {
   return async (dispatch) => {
     try {
-      console.log("Fetch all students thunk is firing");
-      const response = await axios.get("http://localhost:4000/api/students/");
-      console.log("Fetch all students thunk is completed");
+//      console.log("Fetch all students thunk is firing");
+      const response = await axios.get(`${backend_url}/api/students/`);
+//      console.log("Fetch all students thunk is completed");
       dispatch(fetchAllStudents(response.data));
     } catch (error) {
-      console.log(error);
+//      console.log(error);
     }
   };
 };
@@ -66,9 +71,9 @@ export const fetchAllStudentsThunk = () => {
 export const createNewStudentThunk = (studentInfo) => {
   return async (dispatch) => {
     try {
-      console.log("Create new student thunk is firing");
+//      console.log("Create new student thunk is firing");
       const response = await axios.post(
-        "http://localhost:4000/api/students/newstudent",
+        `${backend_url}/api/students/newstudent`,
         {
           firstName: studentInfo.firstName,
           lastName: studentInfo.lastName,
@@ -76,10 +81,10 @@ export const createNewStudentThunk = (studentInfo) => {
           GPA: studentInfo.gpa,
         }
       );
-      console.log("Create new student thunk completed");
+//      console.log("Create new student thunk completed");
       dispatch(createNewStudent(response.data));
     } catch (error) {
-      console.log(error);
+//      console.log(error);
     }
   };
 };
@@ -87,14 +92,14 @@ export const createNewStudentThunk = (studentInfo) => {
 export const deleteStudentThunk = (id, studentInfo) => {
   return async (dispatch) => {
     try {
-      console.log("Delete student thunk is firing");
+//      console.log("Delete student thunk is firing");
       const response = await axios.delete(
-        `http://localhost:4000/api/students/delete/${id}`
+        `${backend_url}/api/students/delete/${id}`
       );
-      console.log("Delete student thunk completed");
+//      console.log("Delete student thunk completed");
       dispatch(deleteStudent(response.data));
     } catch (error) {
-      console.log(error);
+//      console.log(error);
     }
   };
 };
@@ -102,11 +107,11 @@ export const deleteStudentThunk = (id, studentInfo) => {
 export const fetchSingleStudentThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("Fetch single student thunk is firing");
+//      console.log("Fetch single student thunk is firing");
       const response = await axios.get(
-        `http://localhost:4000/api/students/get/${id}`
+        `${backend_url}/api/students/get/${id}`
       );
-      console.log("fetch single student thunk is firing");
+//      console.log("fetch single student thunk is firing");
       dispatch(fetchSingleStudent(response.data));
     } catch (error) {
       console.error(error);
@@ -117,9 +122,9 @@ export const fetchSingleStudentThunk = (id) => {
 export const updateStudentThunk = (studentId, studentInfo) => {
   return async (dispatch) => {
     try {
-      console.log("Update student thunk firing");
+//      console.log("Update student thunk firing");
       const response = await axios.put(
-        `http://localhost:4000/api/students/edit/${studentId}`,
+        `${backend_url}/api/students/edit/${studentId}`,
         {
           firstName: studentInfo.firstName,
           lastName: studentInfo.lastName,
@@ -129,8 +134,8 @@ export const updateStudentThunk = (studentId, studentInfo) => {
           campusId: studentInfo.campusId,
         }
       );
-      console.log("Test", studentInfo.gpa);
-      console.log("Update student thunk completed");
+//      console.log("Test", studentInfo.gpa);
+//      console.log("Update student thunk completed");
       dispatch(updateStudent(response.data));
     } catch (error) {
       console.error(error);
@@ -141,14 +146,14 @@ export const updateStudentThunk = (studentId, studentInfo) => {
 export const removeStudentThunk = (studentId) => {
   return async (dispatch) => {
     try {
-      console.log("Remove student thunk firing");
+//      console.log("Remove student thunk firing");
       const response = await axios.put(
-        `http://localhost:4000/api/students/edit/${studentId}`,
+        `${backend_url}/api/students/edit/${studentId}`,
         {
           campusId: null,
         }
       );
-      console.log("Remove Student Thunk completed");
+//      console.log("Remove Student Thunk completed");
       dispatch(removeStudent(response.data));
     } catch (error) {
       console.error(error);

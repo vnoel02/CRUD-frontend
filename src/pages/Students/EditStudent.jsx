@@ -15,14 +15,14 @@ const EditStudent = () => {
   const [emailError, setEmailError] = useState('')
 
   const fetchAllCampuses = () => {
-    console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
+//    console.log("RUNNING DISPATCH FROM FETCHALLCAMPUSES");
     dispatch(fetchAllCampusesThunk());
   };
 
   // Fetches all the campuses
   useEffect(() => {
-    console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
-    console.log(allCampuses);
+//    console.log("FETCHALLCAMPUSES FIRING IN USEEFFECT");
+//    console.log(allCampuses);
     fetchAllCampuses();
   }, []);
 
@@ -34,7 +34,7 @@ const EditStudent = () => {
   const studentGPA = location.state.GPA;
   const studentCampusID = location.state.campusId;
 
-  console.log(studentId);
+//  console.log(studentId);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const EditStudent = () => {
   });
 
   useEffect(() => {
-    console.log(studentInfo);
+//    console.log(studentInfo);
   }, [studentInfo]);
 
   const onChange = (e) => {
@@ -73,7 +73,7 @@ const EditStudent = () => {
   };
 
   const updateStudent = () => {
-    console.log(studentId);
+//    console.log(studentId);
     dispatch(updateStudentThunk(studentId, studentInfo));
   };
 

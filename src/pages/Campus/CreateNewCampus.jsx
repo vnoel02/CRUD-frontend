@@ -26,7 +26,7 @@ export const CreateNewCampus = () => {
   };
 
   useEffect(() => {
-    console.log(campusInfo);
+//    console.log(campusInfo);
   }, [campusInfo]);
 
   const handleClick = (e) => {
@@ -40,8 +40,8 @@ export const CreateNewCampus = () => {
   };
 
   const createNewCampus = () => {
-    console.log("RUNNING DISPATCH FOR NEW CAMPUS");
-    console.log(campusInfo);
+//    console.log("RUNNING DISPATCH FOR NEW CAMPUS");
+//    console.log(campusInfo);
     dispatch(createNewCampusThunk(campusInfo)).then(() =>
       dispatch(fetchAllCampusesThunk())
     );

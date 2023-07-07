@@ -16,13 +16,13 @@ export const ListStudents = (props) => {
     });
   };
 
-  console.log("List students component");
-  console.log(props.list);
+//  console.log("List students component");
+//  console.log(props.list);
   return props.list && props.list.length > 0 ? (
     props.list
       .sort((a, b) => (a.id > b.id ? 1 : -1))
       .map((student) => {
-        console.log(`Hello ${student.campus}`);
+//        console.log(`Hello ${student.campus}`);
         return (
           
             <div className="students-container" key={student.id}>

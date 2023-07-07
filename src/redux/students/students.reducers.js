@@ -11,7 +11,7 @@ export const INITIAL_STATE = {
 
 // action => {type, payload}
 const studentReducer = (state = INITIAL_STATE, action) => {
-    console.log("In student reducer handling actions");
+//    console.log("In student reducer handling actions");
     switch (action.type) {
         case StudentActionTypes.FETCH_ALL_STUDENTS: 
             return {

@@ -13,7 +13,7 @@ const EditCampus = () => {
   const campusAddress = location.state.address;
   const campusImageUrl = location.state.imageUrl;
   const campusDesc = location.state.description;
-  console.log(campusID);
+////  console.log(campusID);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const EditCampus = () => {
   });
 
   useEffect(() => {
-    console.log(campusInfo);
+////    console.log(campusInfo);
   }, [campusInfo]);
 
   const onChange = (e) => {
@@ -43,7 +43,7 @@ const EditCampus = () => {
   };
 
   const updateCampus = () => {
-    console.log(campusID);
+////    console.log(campusID);
     dispatch(updateCampusThunk(campusID, campusInfo));
   };
 

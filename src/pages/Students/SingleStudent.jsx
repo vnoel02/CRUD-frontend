@@ -13,14 +13,14 @@ const SingleStudent = () => {
   const dispatch = useDispatch();
 
   const fetchSingleStudent = () => {
-    console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS");
-    console.log(`Using ${propsData} for dispatch`);
+//    console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS");
+//    console.log(`Using ${propsData} for dispatch`);
     dispatch(fetchSingleStudentThunk(propsData));
   };
 
   useEffect(() => {
-    console.log("USEEFFECT FIRING FETCHSINGLECAMPUS");
-    console.log(singleStudent);
+//    console.log("USEEFFECT FIRING FETCHSINGLECAMPUS");
+//    console.log(singleStudent);
     fetchSingleStudent();
   }, []);
   return (

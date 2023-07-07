@@ -4,7 +4,7 @@ import CampusStudents from "./CampusStudents";
 
 // Data of single campus passed as prop to this component
 const SingleCampusContainer = (props) => {
-  // console.log(props.campus.students)
+//  // console.log(props.campus.students)
   return (
     <div>
       <div id="singlecampus">

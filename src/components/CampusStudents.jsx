@@ -10,7 +10,7 @@ const CampusStudents = (props) => {
   const onClick = (id, e) => {
     e.preventDefault();
     dispatch(removeStudentThunk(id));
-    console.log("FORCING UPDATE");
+//    console.log("FORCING UPDATE");
     setTimeout(() => {
       alert("Deleting...");
       props.forceUpdate();
@@ -19,11 +19,11 @@ const CampusStudents = (props) => {
     props.forceUpdate();
   };
 
-  console.log("List students component");
-  console.log(props.list);
+//  console.log("List students component");
+//  console.log(props.list);
   return props.list ? (
     props.list.map((student) => {
-      console.log(`Hello ${student.campus}`);
+//      console.log(`Hello ${student.campus}`);
       return (
         <div className="campus-container" key={student.id}>
           <Link to={`/students/${student.id}`} state={student.id}>

@@ -11,20 +11,20 @@ function SingleCampus() {
   // Using useLocation hook to pass prop through link from ListCampuses containter
   const location = useLocation();
   const propsData = location.state;
-  // console.log(propsData);
+//  // console.log(propsData);
 
   // Going to redux store for single campus state
   const singleCampus = useSelector((state) => state.campuses.singleCampus);
   const dispatch = useDispatch();
   const fetchSingleCampus = () => {
-    console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS");
-    console.log(`Using ${propsData} for dispatch`);
+//    console.log("RUNNING DISPATCH FETCH SINGLE CAMPUS");
+//    console.log(`Using ${propsData} for dispatch`);
     dispatch(fetchSingleCampusThunk(propsData));
   };
 
   useEffect(() => {
-    console.log("USEEFFECT FIRING FETCHSINGLECAMPUS");
-    console.log("This is the data", singleCampus);
+//    console.log("USEEFFECT FIRING FETCHSINGLECAMPUS");
+//    console.log("This is the data", singleCampus);
     fetchSingleCampus();
   }, [ignored]);
 
