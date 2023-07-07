@@ -1,7 +1,8 @@
 // This is where the api call from the database is made
 import axios from "axios";
-
 import CampusActionType from "./campus.types";
+
+const backend_url = process.env.REACT_APP_BACKEND_URL;
 
 //action creator
 export const fetchAllCampuses = (payload) => {
@@ -59,7 +60,7 @@ export const fetchAllCampusesThunk = () => {
   return async (dispatch) => {
     try {
 //      console.log("FETCHALLCAMPUSES THUNK IS FIRING");
-      const response = await axios.get("http://localhost:4000/api/campuses");
+      const response = await axios.get(`${backend_url}/api/campuses`);
 //      console.log("FETCHALLCAMPUSES THUNK COMPLETED");
       dispatch(fetchAllCampuses(response.data)); //dispatching the data
     } catch (error) {
@@ -74,7 +75,7 @@ export const createNewCampusThunk = (campusInfo) => {
   return async (dispatch) => {
     try {
 //      console.log("CREATENEWCAMPUS THUNK IS FIRING");
-      const response = await axios.post("http://localhost:4000/api/campuses", {
+      const response = await axios.post(`${backend_url}/api/campuses`, {
         name: campusInfo.name,
         address: campusInfo.address,
         // imageUrl: "hello",
@@ -96,7 +97,7 @@ export const deleteCampusThunk = (id, campusInfo) => {
     try {
 //      console.log("DELETE CAMPUS THUNK IS FIRING");
       const response = await axios.delete(
-        `http://localhost:4000/api/campuses/delete/${id}`
+        `${backend_url}/api/campuses/delete/${id}`
       );
 //      console.log("DELETE CAMPUS THUNK COMPLETED");
       dispatch(deleteCampus(response.data));
@@ -113,7 +114,7 @@ export const fetchSingleCampusThunk = (id) => {
     try {
 //      console.log("FETCH SINGLE CAMPUS THUNK IS FIRING");
       const response = await axios.get(
-        `http://localhost:4000/api/campuses/get/${id}`
+        `${backend_url}/api/campuses/get/${id}`
       );
 //      console.log("FETCH SINGLE CAMPUS THUNK COMPLETED");
       dispatch(fetchSingleCampus(response.data));
@@ -130,7 +131,7 @@ export const updateCampusThunk = (campusID, campusInfo) => {
     try {
 //      console.log("UPDATE CAMPUS THUNK IS FIRING");
       const response = await axios.put(
-        `http://localhost:4000/api/campuses/edit/${campusID}`,
+        `${backend_url}/api/campuses/edit/${campusID}`,
         {
           name: campusInfo.name,
           address: campusInfo.address,
